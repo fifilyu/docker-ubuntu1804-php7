@@ -1,0 +1,1 @@
+docker build -t fifilyu/docker-ubuntu1804-php7:latest .
