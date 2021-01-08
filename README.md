@@ -168,11 +168,7 @@ MySQL主配置文件:
 
 日志目录:
 
-    /usr/local/php-5.2.17/var/log
-
-Session目录:
-
-    /usr/local/php-5.2.17/var/lib/session
+    /var/log/php7.2-fpm.log 和 /var/log/fpm-php.www.log
 
 #### 4.2.2 Nginx
 
