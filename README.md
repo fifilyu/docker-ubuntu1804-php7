@@ -169,10 +169,7 @@ MySQL主配置文件:
 日志文件:
 
     /var/log/php7.2-fpm.log
-
-Session目录:
-
-    /var/lib/php/sessions
+    /var/log/fpm-php.www.log
 
 #### 4.2.2 Nginx
 
