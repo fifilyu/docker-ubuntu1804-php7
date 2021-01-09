@@ -166,13 +166,13 @@ MySQL主配置文件:
 
 #### 4.2.1 PHP
 
-日志目录:
+日志文件:
 
-    /usr/local/php-5.2.17/var/log
+    /var/log/php7.2-fpm.log
 
 Session目录:
 
-    /usr/local/php-5.2.17/var/lib/session
+    /var/lib/php/sessions
 
 #### 4.2.2 Nginx
 

@@ -1,9 +1,4 @@
 #!/bin/sh
-
-pw=$(pwgen -1 20)
-echo "$(date +"%Y-%m-%d %H:%M:%S") [Info] Root User Temporary Password: ${pw}"
-echo "root:${pw}" | chpasswd
-
 service ssh start
 
 rm -f /var/run/mysqld/mysqld.pid /var/run/mysqld/mysqld.sock /var/run/mysqld/mysqld.sock.lock
@@ -36,6 +31,10 @@ if [ ! -z "${PUBLIC_STR}" ]; then
     fi
 fi
 
+pw=$(pwgen -1 20)
+echo "$(date +"%Y-%m-%d %H:%M:%S") [信息] Root用户密码：${pw}"
+echo "root:${pw}" | chpasswd
+
 mysql_lock_file=/var/log/docker_init_mysql.lock
 
 if [ -z "${MYSQL_ROOT_PASSWORD}" ]; then
@@ -59,7 +58,7 @@ else
         fi
 
         mysql -uroot -p"${MYSQL_ROOT_PASSWORD}" -e \
-            "CREATE USER 'root'@'%' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';GRANT ALL ON *.* TO 'root'@'%' WITH GRANT OPTION;"
+            "CREATE USER 'root'@'%' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';GRANT ALL ON *.* TO 'root'@'%' WITH GRANT OPTION;" 2>/dev/null
 
         if [ $? -eq 0 ]; then
             echo "`date "+%Y-%m-%d %H:%M:%S"` [信息] 设置MySQL远程登录成功"

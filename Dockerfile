@@ -15,7 +15,7 @@ ENV LANG en_US.UTF-8
 RUN apt-get -y upgrade
 
 ####################
-# 1. 初始化CentOS6
+# 初始化
 ####################
 RUN apt-get install -y mlocate openssh-server iproute2 curl wget tcpdump vim telnet screen sudo rsync tcpdump openssh-client tar bzip2 xz-utils pwgen
 RUN echo set fencs=utf-8,gbk >> /etc/vim/vimrc
@@ -63,6 +63,8 @@ RUN apt-get install -y \
     php-xml \
     php-xmlrpc \
     php-zip
+RUN touch /var/log/fpm-php.www.log /var/log/php7.2-fpm.log
+RUN chown www-data:www-data /var/log/fpm-php.www.log /var/log/php7.2-fpm.log
 
 ####################
 # 安装MySQL
