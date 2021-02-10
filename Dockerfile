@@ -4,7 +4,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 COPY file/etc/apt/sources.list /etc/apt/sources.list
 
-RUN apt-get update
+RUN apt-get clean && apt-get update
 
 RUN apt-get install -y locales
 RUN locale-gen "en_US.UTF-8"
